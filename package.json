@@ -1,0 +1,28 @@
+{
+  "name": "prueba-tecnica",
+  "version": "1.0.0",
+  "description": "E2E Testing- Saucelab",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open --e2e --browser chrome",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mudrostnesavladi/Prueba-Tecnica-Saucelab.git"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "test"
+  ],
+  "author": "Andrés Guillermo López Hurtado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mudrostnesavladi/Prueba-Tecnica-Saucelab/issues"
+  },
+  "homepage": "https://github.com/mudrostnesavladi/Prueba-Tecnica-Saucelab#readme",
+  "devDependencies": {
+    "cypress": "^13.9.0"
+  }
+}
