@@ -1,42 +1,87 @@
-# cypress-cucumber-boilerplate-for-e2e-testing
+# Web Testing - Escenarios de prueba con Cypress y Cucumber
 
-<img src="https://media-exp1.licdn.com/dms/image/C4E0BAQF1dg2KtKFdPg/company-logo_200_200/0/1626295436859?e=2159024400&v=beta&t=Ib_T9PXXQxkHRKnj3Oe65EKuR6EAh01IgAA6IGvU0FY" alt="exemplo imagem">
+Autor: Andrés Guillermo López Hurtado
 
-> Cypress 10+ with Cucumber boilerplate project.
+## **Introducción**
 
-### 💻 Topics
+Este proyecto de pruebas automatizadas evalúa la funcionalidad del sitio web [Sauce Labs](https://saucelabs.com/) utilizando Cypress y Cucumber bajo la metodología BDD (Behavior-Driven Development). Se implementó el modelo de Page Object para organizar y mantener el código de manera eficiente.
 
-Integrated with:
+## **Objetivos**
 
-- [x] https://github.com/badeball/cypress-cucumber-preprocessor
-- [x] https://github.com/bahmutov/cypress-esbuild-preprocessor
-- [x] https://www.npmjs.com/package/multiple-cucumber-html-reporter
-- [x] https://github.com/cucumber/json-formatter
-- [x] https://github.com/Shelex/cypress-allure-plugin
+1. Evaluar la funcionalidad del sitio web Sauce Labs.
+2. Validar el comportamiento del ingreso al sitio con credenciales válidas e incorrectas.
+3. Identificar posibles problemas de seguridad al simular ingresos fallidos y bloqueo de usuarios.
+4. Verificar la manipulación del carrito de compras, incluyendo agregar y eliminar productos.
+5. Garantizar el correcto funcionamiento del check-out y la información personal.
+6. Utilizar el modelo de Page Object para un código organizado y mantenible.
 
-(+ bundlers: https://github.com/badeball/cypress-cucumber-preprocessor/tree/master/examples)
+### **Instalación de Cypress**
 
-- ## 💻 Pre-requisites
+1. Inicializar un proyecto npm:
+    
+    ```
+    npm init
+    ```
+    
+2. Instalar Cypress:
+    
+    ```
+    npm install cypress --save-dev
+    ```
+    
 
-1. Node JS
-2. Optional: Java 8 for Allure Reporter
-3. Optional: Json-formatter for Native Reporter option(depends on your OS: https://github.com/cucumber/json-formatter)
+### **Instalación de Cucumber**
 
-## 🚀 Install the project
+1. Instalar el preprocessor de Cucumber:
+    
+    ```
+    npm install @badeball/cypress-cucumber-preprocessor --save-dev
+    
+    ```
+    
+2. Instalar el empaquetador Esbuild:
+    
+    ```
+    npm i -D cypress @bahmutov/cypress-esbuild-preprocessor esbuild --save-dev
+    ```
+    
 
-Install project dependencies with: npm i
+### **Pruebas en paralelo**
 
-## Run the demo:
+1. Instalar la dependencia para pruebas en paralelo:
+    
+    ```
+    npm i cypress-parallel
+    
+    ```
+    
+2. Configurar scripts en **`package.json`**:
+    
+    ```json
+    "scripts": {
+      "cy:run": "cypress run",
+      "cy:parallel": "cypress-parallel -s cy:run -t 2 -d <your-cypress-specs-folder> -a '\"<your-cypress-cmd-args>\"'"
+    }
+    
+    ```
+    
 
-1. Standard Execution: npm run cypress:execution
-2. Native report(with JSON FORMATTER): Check how to do it in this video: [Cucumber BDD Report - YouTube](https://www.youtube.com/watch?v=5AGXK9cL2fs&t=2s&ab_channel=JoanMedia)
-3. Allure Report: 
-   1. npm run cypress:execution-allure
-   2. npm run allure:report
-   3. allure open
-   4. You'll get a report like this one: GitHub Page - Allure Report Sample: https://joanesquivel.github.io/cypress-cucumber-boilerplate/
+## **Ejecución de las pruebas**
 
+- Para ejecutar las pruebas:
+    
+    ```
+    npx cypress run
+    
+    ```
+    
+- Para ejecutar en la interfaz gráfica:
+    
+    ```
+    npm run cypress:runner
+    ```
+    
 
-##  Sample repo to generate an allure report as an artifact using GH Actions
+## Pipeline
 
-* https://github.com/SeyiOG/newCyLearn2/blob/main/.github/workflows/cypress-allure-report.yml
+Se desarrolla también un pequeño script .yml de tal manera que se las pruebas se puedan ejecutar de manera automática cumpliendo el objetivo de una retroalimentación ágil para el equipo de desarrollo y metodología que se esté utilizando, dicho script ejecuta a través de logs los features correspondientes de tal manera que se tenga una base de pruebas mantenible y escalable en el tiempo.
